@@ -1,18 +1,18 @@
 {
-  "name": "node-phantomjs-lambda-template",
-  "version": "0.0.1",
-  "description": "The bare minimum for a phantomjs app running on Amazon Lambda.",
+  "name": "usersim",
+  "version": "0.1.0",
+  "description": "simulate a horde of users overrunning alpha",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/narainsagar/node-phantomjs-lambda-template.git"
+    "url": "git://github.com/besport/usersim.git"
   },
-  "author": "Narain Sagar",
+  "author": "Jan Rochel <jan@besport.com>",
   "license": "isc",
   "bugs": {
-    "url": "https://github.com/narainsagar/node-phantomjs-lambda-template/issues"
+    "url": "https://github.com/besport/usersim/issues"
   },
-  "homepage": "https://github.com/narainsagar/node-phantomjs-lambda-template",
+  "homepage": "https://github.com/besport/usersim",
   "dependencies": {},
   "devDependencies": {
     "aws-sdk": "^2.1.39",

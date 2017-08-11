@@ -1,7 +1,3 @@
-# PhantomJS Lambda Template
-
-A [PhantomJS](http://phantomjs.org/) node.js app for [Amazon Lambda](http://aws.amazon.com/lambda/). Based on [node-lambda-template](https://github.com/rebelmail/node-lambda-template) using [node-lambda](https://github.com/rebelmail/node-lambda). The app includes a PhantomJS binary (`phantomjs`) compiled for AWS Linux (https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-linux-x86_64.tar.bz2).
-
 ## Setup
 
 Install dependencies using npm. It'll install the AWS SDK as well as PhantomJS on the development machine.
