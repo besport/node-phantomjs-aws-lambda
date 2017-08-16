@@ -8,7 +8,7 @@ page.open(url, function(status) {
 		console.log("URL: " + page.url);
 		// page.render('screenshot.png');
     page.evaluate(function () {
-      var selector ='button:not(.sign-up-button):not(.sign-in-button), a:not(.topbar-logo):not(.topbar-btn):not(.logout-btn), .ot-car-ribbon-list-item';
+      var selector ='button:not(.sign-up-button):not(.sign-in-button):not(.logout-btn):not(.report-btn):not(.ot-drp-menu-itm), a:not(.topbar-logo):not(.topbar-btn), .ot-car-ribbon-list-item';
       var clickables = document.querySelectorAll(selector);
       var random_index = [Math.floor(Math.random()*clickables.length)];
       var clickable = clickables[random_index];
