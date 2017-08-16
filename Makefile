@@ -20,5 +20,12 @@ start:
 invoke:
 	aws lambda invoke --region eu-west-1 --function-name usersim-development --payload "`cat event.json`" --log-type Tail /dev/stdout
 
+invoke-silent:
+	aws lambda invoke --region eu-west-1 --function-name usersim-development --payload "`cat event.json`" /dev/null
+
+# keeps alive a pool of "make invoke" instances
+pool:
+	./pool.sh
+
 test:
 	npm run test
