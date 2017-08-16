@@ -1,23 +1,16 @@
 #!/bin/bash
 
-command="make invoke-silent"
+. .env
+
+command=$AWS_INVOKE
 
 POOL_SIZE=$(mktemp)
 echo '0' > $POOL_SIZE
 
-# function kill_jobs {
-#     echo "caught SIGINT"
-#     for job in $(jobs -p); do
-#         echo killing $job
-#         kill $job
-#     done
-# } 
-#
-# trap 'kill_jobs; exit' SIGINT
-
 function cleanup {
 	rm -f $POOL_SIZE
 	echo
+	kill -- -$$
 }
 
 trap 'cleanup; exit' SIGINT
@@ -34,14 +27,11 @@ function handle_keypresses {
 	while ( true ); do
 		read -s -N 1 key
     case "$key" in
-			A) modify_pool_size +1;; # Up
-			B) modify_pool_size -1 ;; # Down
+			A) modify_pool_size +1;; # arrow up
+			B) modify_pool_size -1 ;; # arrow down
 			'+') modify_pool_size +10;;
 			'-') modify_pool_size -10;;
     esac
-		# echo $key
-		# "\e[A" # up-arrow
-		# "\e[B" # down-arrow
 	done
 }
 

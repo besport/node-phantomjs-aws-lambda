@@ -2,7 +2,7 @@
 
 # install dependencies (into sub-directory node_modules)
 install:
-	npm run install 
+	npm install
 
 # generates a skeleton .env file
 setup:
@@ -18,14 +18,10 @@ start:
 
 # launches the lambda function on AWS; requires authentication data in ~/.aws/credentials
 invoke:
-	aws lambda invoke --region eu-west-1 --function-name usersim-development --payload "`cat event.json`" --log-type Tail /dev/stdout
+	aws lambda invoke --region eu-west-1 --function-name usersim-development --log-type Tail /dev/stdout
 
 invoke-silent:
-	aws lambda invoke --region eu-west-1 --function-name usersim-development --payload "`cat event.json`" /dev/null
-
-# keeps alive a pool of "make invoke" instances
-pool:
-	./pool.sh
+	aws lambda invoke --region eu-west-1 --function-name usersim-development /dev/null
 
 test:
 	npm run test
