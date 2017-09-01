@@ -18,10 +18,10 @@ start:
 
 # launches the lambda function on AWS; requires authentication data in ~/.aws/credentials
 invoke:
-	aws lambda invoke --region eu-west-1 --function-name usersim-development --log-type Tail /dev/stdout
+	aws lambda invoke --region eu-west-1 --function-name usersim --log-type Tail /dev/stdout
 
 invoke-silent:
-	aws lambda invoke --region eu-west-1 --function-name usersim-development /dev/null
+	aws lambda invoke --region eu-west-1 --function-name usersim /dev/null
 
 test:
 	npm run test

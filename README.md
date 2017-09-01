@@ -14,7 +14,6 @@ Run the setup command to generate the environment file with the configuration us
 
 For this you need to have aws account and fill out confuguration in `.env` file:
 
-AWS_ENVIRONMENT=development
 AWS_ACCESS_KEY_ID=your_aws_key_id
 AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key
 AWS_ROLE_ARN=arn:aws:iam::449128836998:role/service-role/bots
