@@ -1,4 +1,16 @@
-var url = 'https://alpha.besport.com/';
+var event = {
+  "startURL": "https://alpha.besport.com/",
+  "topURL": "https://alpha.besport.com/",
+  "clickFrequency": "1000"
+};
+
+var arg = JSON.parse(require('system').args[1]);
+event.startURL = arg.startURL || event.startURL;
+event.topURL = arg.topURL || event.topURL;
+event.clickFrequency = arg.clickFrequency || event.clickFrequency;
+
+console.log("running with parameters " + JSON.stringify(event));
+
 var page = require('webpage').create();
 
 function strStartsWith(str, prefix) {
@@ -7,10 +19,10 @@ function strStartsWith(str, prefix) {
 
 page.settings.userAgent = 'Mozilla/5.0 (usersim) Gecko/20100101 Firefox/54.0';
 
-page.open(url, function(status) {
+page.open(event.startURL, function(status) {
 	setInterval(function() {
 		console.log("URL: " + page.url);
-		if (!strStartsWith(page.url, url))
+		if (!strStartsWith(page.url, event.topURL))
 		{
 			console.log ("strayed to another page. exiting...")
 			phantom.exit();
@@ -23,5 +35,5 @@ page.open(url, function(status) {
       var clickable = clickables[random_index];
       clickable.click();
     });
-	}, 1000);
+	}, event.clickFrequency);
 });

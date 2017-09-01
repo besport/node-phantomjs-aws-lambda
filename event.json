@@ -1,5 +1,5 @@
 {
-  "key": "value",
-  "key2": "value2",
-  "other_key": "other_value"
+  "startURL": "https://alpha.besport.com/",
+  "topURL": "https://alpha.besport.com/",
+  "clickFrequency": "1000"
 }

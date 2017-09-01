@@ -15,12 +15,13 @@ function getPhantomFileName(callback) {
 }
 
 // Call the phantomJS script
-function runPhantom(scriptName, callback) {
+function runPhantom(scriptName, event, callback) {
   getPhantomFileName(function(phantomPath) {
     var outputData = [];
     var error = null;
     var childArgs = [
-      path.join(__dirname, scriptName)
+      path.join(__dirname, scriptName),
+      JSON.stringify(event)
     ];
 
     // This option causes the shared library loader to output
@@ -58,5 +59,5 @@ function runPhantom(scriptName, callback) {
 // Entry Point
 exports.handler = function( event, context ) {
   // Execute the phantomJS call and exit
-  runPhantom('phantomjs-script.js', context.done);
+  runPhantom('phantomjs-script.js', event, context.done);
 }
