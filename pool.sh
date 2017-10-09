@@ -2,8 +2,6 @@
 
 . .env
 
-command=$AWS_INVOKE
-
 POOL_SIZE=$(mktemp)
 echo '0' > $POOL_SIZE
 
@@ -50,7 +48,7 @@ function run_jobs {
 			jobs_to_launch=$(($pool_size - $num_running_jobs))
 
 			for (( i = 0; i < $jobs_to_launch; i++ )); do
-			    $command > /dev/null 2> /dev/null &
+			    aws lambda invoke --region $AWS_REGION --function-name $AWS_FUNCTION_NAME --payload "`cat event.json`" /dev/null > /dev/null &
 			done
 
 			sleep 0.2

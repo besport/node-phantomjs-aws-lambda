@@ -25,7 +25,6 @@ AWS_MEMORY_SIZE=512
 AWS_TIMEOUT=60
 AWS_DESCRIPTION=
 AWS_RUNTIME=nodejs6.10
-AWS_INVOKE='aws lambda invoke --region eu-west-1 --function-name usersim-development /dev/null'
 ....
 ```shell
 npm run setup
