@@ -1,12 +1,14 @@
 var event = {
   "startURL": "https://alpha.besport.com/",
   "topURL": "https://alpha.besport.com/",
+  "selector": "button:not(.sign-up-button):not(.sign-in-button):not(.logout-btn):not(.report-btn):not(.ot-drp-menu-itm), a:not(.topbar-logo):not(.topbar-btn):not([rel=\"nofollow\"]), .ot-car-ribbon-list-item",
   "clickFrequency": "1000"
 };
 
 var arg = JSON.parse(require('system').args[1]);
 event.startURL = arg.startURL || event.startURL;
 event.topURL = arg.topURL || event.topURL;
+event.selector = arg.selector || event.selector;
 event.clickFrequency = arg.clickFrequency || event.clickFrequency;
 
 console.log("running with parameters " + JSON.stringify(event));
@@ -28,12 +30,11 @@ page.open(event.startURL, function(status) {
 			phantom.exit();
 		};
 		// page.render('screenshot.png');
-    page.evaluate(function () {
-      var selector ='button:not(.sign-up-button):not(.sign-in-button):not(.logout-btn):not(.report-btn):not(.ot-drp-menu-itm), a:not(.topbar-logo):not(.topbar-btn):not([rel="nofollow"]), .ot-car-ribbon-list-item';
+    page.evaluate(function (selector) {
       var clickables = document.querySelectorAll(selector);
       var random_index = [Math.floor(Math.random()*clickables.length)];
       var clickable = clickables[random_index];
       clickable.click();
-    });
+    }, event.selector);
 	}, event.clickFrequency);
 });
